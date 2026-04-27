@@ -1,75 +1,145 @@
+import java.util.Scanner;
+
 public class App {
     public static void main(String[] args) {
-        // Create user with default goals
-        User user = new User("Alex", "Build fitness");
-        System.out.println("User: " + user.getName());
-        System.out.println("Goals: Calories=" + user.getCalorieGoal() +
-                ", Protein=" + user.getProteinGoal() +
-                "g, Sleep=" + user.getSleepGoal() +
-                "h, Workouts=" + user.getWorkoutGoal());
+        Scanner input = new Scanner(System.in);
 
-        // Create fitness log and add sample data
+        // ========== PART 1: GET USER GOALS ==========
+        System.out.println("=== FITNESS TRACKER - SET UP ===");
+        System.out.print("Enter your name: ");
+        String name = input.nextLine();
+
+        System.out.print("Enter your fitness goal: ");
+        String fitnessGoals = input.nextLine();
+
+        // Create user with entered goals
+        User user = new User(name, fitnessGoals);
+
+        // Prompt for protein goal
+        System.out.print("Enter your daily protein goal (grams): ");
+        user.setProteinGoal(input.nextInt());
+
+        // Prompt for sleep goal
+        System.out.print("Enter your daily sleep goal (hours): ");
+        user.setSleepGoal(input.nextInt());
+
+        // Prompt for workout goal
+        System.out.print("Enter your weekly workout goal (number of workouts): ");
+        user.setWorkoutGoal(input.nextInt());
+        input.nextLine(); // consume newline
+
+        System.out.println("\n=== YOUR GOALS ===");
+        System.out.println("Name: " + user.getName());
+        System.out.println("Fitness Goal: " + user.getFitnessGoals());
+        System.out.println("Protein: " + user.getProteinGoal() + "g");
+        System.out.println("Sleep: " + user.getSleepGoal() + " hours");
+        System.out.println("Workouts: " + user.getWorkoutGoal() + " per week");
+
+        // ========== PART 2: LOG DAILY ACTIVITY ==========
+        System.out.println("\n=== LOG TODAY'S ACTIVITY ===");
+
+        // Create fitness log
         FitnessLog log = new FitnessLog();
 
-        // Add workout: 1000 calories (goal is 2000)
-        WorkoutEntry workout1 = new WorkoutEntry("Running", 60, 600);
-        WorkoutEntry workout2 = new WorkoutEntry("Strength", 45, 400);
-        log.addWorkout(workout1);
-        log.addWorkout(workout2);
+        // Log workout
+        System.out.print("Enter exercise name: ");
+        String exerciseName = input.nextLine();
 
-        // Add macro entries: 180g protein (goal is 150g)
-        MacroEntry macro1 = new MacroEntry("Breakfast", 30, 50, 10);
-        MacroEntry macro2 = new MacroEntry("Lunch", 60, 80, 20);
-        MacroEntry macro3 = new MacroEntry("Dinner", 90, 100, 30);
-        log.addMacro(macro1);
-        log.addMacro(macro2);
-        log.addMacro(macro3);
+        System.out.print("Enter duration (minutes): ");
+        int duration = input.nextInt();
 
-        // Add sleep entry: 8 hours (goal is 8h)
-        SleepEntry sleep = new SleepEntry(8.0, "Good", "2026-04-23");
+        System.out.print("Enter number of sets: ");
+        int sets = input.nextInt();
+
+        System.out.print("Enter number of reps: ");
+        int reps = input.nextInt();
+        input.nextLine(); // consume newline
+
+        WorkoutEntry workout = new WorkoutEntry(exerciseName, duration, sets, reps);
+        log.addWorkout(workout);
+
+        // Log macros
+        System.out.print("\nEnter meal name: ");
+        String mealName = input.nextLine();
+
+        System.out.print("Enter protein (grams): ");
+        int protein = input.nextInt();
+
+        System.out.print("Enter carbs (grams): ");
+        int carbs = input.nextInt();
+
+        System.out.print("Enter fat (grams): ");
+        int fat = input.nextInt();
+        input.nextLine(); // consume newline
+
+        MacroEntry macro = new MacroEntry(mealName, protein, carbs, fat);
+        log.addMacro(macro);
+
+        // Log sleep
+        System.out.print("\nEnter hours of sleep: ");
+        double sleepHours = input.nextDouble();
+        input.nextLine(); // consume newline
+
+        System.out.print("Enter sleep quality (Good/Fair/Poor): ");
+        String sleepQuality = input.nextLine();
+
+        SleepEntry sleep = new SleepEntry(sleepHours, sleepQuality, "2026-04-27");
         log.addSleepEntry(sleep);
+
+        // ========== PART 3: DISPLAY DATA AND CALCULATE SCORE ==========
+        System.out.println("\n=== TODAY'S LOGGED DATA ===");
+        System.out.println("Workout: " + workout.getType() + " - " +
+                workout.getDurationMinutes() + " min, " +
+                workout.getSets() + " sets, " +
+                workout.getReps() + " reps");
+
+        System.out.println("Meal: " + macro.getMealName() + " - " +
+                macro.getProtein() + "g protein, " +
+                macro.getCarbs() + "g carbs, " +
+                macro.getFat() + "g fat");
+
+        System.out.println("Sleep: " + sleep.getHours() + " hours (" +
+                sleep.getQuality() + ")");
 
         // Create GoalTracker and calculate daily score
         GoalTracker tracker = new GoalTracker(user, log);
 
-        System.out.println("\n=== TODAY'S DATA ===");
-        System.out.println("Workouts: " + log.getWorkouts().size());
-        int totalCalories = 0;
-        for (WorkoutEntry w : log.getWorkouts()) {
-            System.out.println("  - " + w.getType() + ": " + w.getCaloriesBurned() + " cal");
-            totalCalories += w.getCaloriesBurned();
-        }
-        System.out.println("  Total Calories: " + totalCalories);
+        System.out.println("\n=== GOAL SCORE CALCULATION ===");
+
+        // Calculate individual scores
+        int totalWorkouts = log.getWorkouts().size();
+        double workoutScore = Math.min(((double) totalWorkouts / user.getWorkoutGoal()) * 100, 100.0);
+        System.out.println("Workout Score: " + totalWorkouts + "/" + user.getWorkoutGoal() + " workouts = " +
+                String.format("%.1f", workoutScore) + "%");
 
         int totalProtein = 0;
         for (MacroEntry m : log.getMacros()) {
-            System.out.println("  - " + m.getMealName() + ": " + m.getProtein() + "g protein");
             totalProtein += m.getProtein();
         }
-        System.out.println("  Total Protein: " + totalProtein + "g");
+        double macroScore = Math.min(((double) totalProtein / user.getProteinGoal()) * 100, 100.0);
+        System.out.println("Macro Score: " + totalProtein + "/" + user.getProteinGoal() + "g protein = " +
+                String.format("%.1f", macroScore) + "%");
 
+        double totalSleep = 0;
         for (SleepEntry s : log.getSleepEntries()) {
-            System.out.println("  Sleep: " + s.getHours() + " hours (" + s.getQuality() + ")");
+            totalSleep += s.getHours();
         }
+        double sleepScore = Math.min((totalSleep / user.getSleepGoal()) * 100, 100.0);
+        System.out.println("Sleep Score: " + totalSleep + "/" + user.getSleepGoal() + "h sleep = " +
+                String.format("%.1f", sleepScore) + "%");
 
-        System.out.println("\n=== GOAL SCORE CALCULATION ===");
-        double workoutScore = ((double) totalCalories / user.getCalorieGoal()) * 100;
-        workoutScore = Math.min(workoutScore, 100.0);
-        System.out.println("Workout Score: " + totalCalories + "/" + user.getCalorieGoal() + " cal = "
-                + String.format("%.1f", workoutScore) + "%");
+        // Calculate total calories: protein=4 cal/g, carbs=4 cal/g, fat=9 cal/g
+        int totalCalories = 0;
+        for (MacroEntry m : log.getMacros()) {
+            totalCalories += m.calculateCalories();
+        }
+        System.out.println("\nTotal Calories: " + totalCalories + " cal");
 
-        double macroScore = ((double) totalProtein / user.getProteinGoal()) * 100;
-        macroScore = Math.min(macroScore, 100.0);
-        System.out.println("Macro Score: " + totalProtein + "/" + user.getProteinGoal() + "g = "
-                + String.format("%.1f", macroScore) + "%");
-
-        double sleepScore = (8.0 / user.getSleepGoal()) * 100;
-        sleepScore = Math.min(sleepScore, 100.0);
-        System.out
-                .println("Sleep Score: 8.0/" + user.getSleepGoal() + "h = " + String.format("%.1f", sleepScore) + "%");
-
+        // Calculate and display daily progress score
         int dailyScore = tracker.calcDailyScore();
-        System.out.println("\n=== DAILY SCORE ===");
-        System.out.println("Final Score: " + dailyScore + "%");
+        System.out.println("\n=== DAILY PROGRESS SCORE ===");
+        System.out.println("Your daily progress score: " + dailyScore + "%");
+
+        input.close();
     }
 }

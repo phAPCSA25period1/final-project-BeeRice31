@@ -1,13 +1,11 @@
 public class User {
     private String name;
     private String fitnessGoals;
-    private int calorieGoal;
     private int proteinGoal;
     private int sleepGoal;
     private int workoutGoal;
 
     public User() {
-        this.calorieGoal = 2000;
         this.proteinGoal = 150;
         this.sleepGoal = 8;
         this.workoutGoal = 1;
@@ -16,7 +14,6 @@ public class User {
     public User(String name, String fitnessGoals) {
         this.name = name;
         this.fitnessGoals = fitnessGoals;
-        this.calorieGoal = 2000;
         this.proteinGoal = 150;
         this.sleepGoal = 8;
         this.workoutGoal = 1;
@@ -36,14 +33,6 @@ public class User {
 
     public void setFitnessGoals(String fitnessGoals) {
         this.fitnessGoals = fitnessGoals;
-    }
-
-    public int getCalorieGoal() {
-        return calorieGoal;
-    }
-
-    public void setCalorieGoal(int calorieGoal) {
-        this.calorieGoal = calorieGoal;
     }
 
     public int getProteinGoal() {

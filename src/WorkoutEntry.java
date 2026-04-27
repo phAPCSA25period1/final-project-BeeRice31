@@ -1,15 +1,17 @@
 public class WorkoutEntry {
     private String type;
     private int durationMinutes;
-    private int caloriesBurned;
+    private int sets;
+    private int reps;
 
     public WorkoutEntry() {
     }
 
-    public WorkoutEntry(String type, int durationMinutes, int caloriesBurned) {
+    public WorkoutEntry(String type, int durationMinutes, int sets, int reps) {
         this.type = type;
         this.durationMinutes = durationMinutes;
-        this.caloriesBurned = caloriesBurned;
+        this.sets = sets;
+        this.reps = reps;
     }
 
     public String getType() {
@@ -28,11 +30,19 @@ public class WorkoutEntry {
         this.durationMinutes = durationMinutes;
     }
 
-    public int getCaloriesBurned() {
-        return caloriesBurned;
+    public int getSets() {
+        return sets;
     }
 
-    public void setCaloriesBurned(int caloriesBurned) {
-        this.caloriesBurned = caloriesBurned;
+    public void setSets(int sets) {
+        this.sets = sets;
+    }
+
+    public int getReps() {
+        return reps;
+    }
+
+    public void setReps(int reps) {
+        this.reps = reps;
     }
 }

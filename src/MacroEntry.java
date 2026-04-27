@@ -45,4 +45,9 @@ public class MacroEntry {
     public void setFat(int fat) {
         this.fat = fat;
     }
+
+    // Calculate total calories: protein=4 cal/g, carbs=4 cal/g, fat=9 cal/g
+    public int calculateCalories() {
+        return (protein * 4) + (carbs * 4) + (fat * 9);
+    }
 }

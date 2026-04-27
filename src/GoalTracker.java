@@ -21,14 +21,11 @@ public class GoalTracker {
     }
 
     private double calcWorkoutScore() {
-        // Calculate total calories burned today
-        int totalCaloriesBurned = 0;
-        for (WorkoutEntry workout : log.getWorkouts()) {
-            totalCaloriesBurned += workout.getCaloriesBurned();
-        }
+        // Calculate total workouts today
+        int totalWorkouts = log.getWorkouts().size();
 
-        // Score based on calorie goal
-        double score = ((double) totalCaloriesBurned / user.getCalorieGoal()) * 100;
+        // Score based on workout goal
+        double score = ((double) totalWorkouts / user.getWorkoutGoal()) * 100;
 
         // Cap at 100%
         return Math.min(score, 100.0);
