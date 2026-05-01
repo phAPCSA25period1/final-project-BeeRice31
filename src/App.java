@@ -10,7 +10,7 @@ public class App {
         /**
          * Prompts the user for an integer input and repeats until a valid integer is
          * entered.
-         *
+         * 
          * @param prompt the message to display to the user
          * @param input  the Scanner object to read input from
          * @return a valid integer entered by the user
@@ -32,7 +32,7 @@ public class App {
         /**
          * Prompts the user for a double input and repeats until a valid double is
          * entered.
-         *
+         * 
          * @param prompt the message to display to the user
          * @param input  the Scanner object to read input from
          * @return a valid double entered by the user
@@ -53,13 +53,13 @@ public class App {
 
         /**
          * Prints a styled section header to the console.
-         *
+         * 
          * @param title the title to display in the header
          */
         private static void printHeader(String title) {
-                System.out.println("\n╔══════════════════════════════════════╗");
-                System.out.printf("║  %-36s║%n", title);
-                System.out.println("╚══════════════════════════════════════╝");
+                System.out.println("\n+======================================+");
+                System.out.printf("|  %-36s|%n", title);
+                System.out.println("+======================================+");
         }
 
         /**
@@ -73,7 +73,7 @@ public class App {
          * Entry point for the Fitness Tracker application.
          * Guides the user through setting goals, logging daily activity,
          * and displaying a daily progress score.
-         *
+         * 
          * @param args command-line arguments (not used)
          */
         public static void main(String[] args) {
@@ -88,6 +88,7 @@ public class App {
                 String fitnessGoals = input.nextLine();
 
                 User user = new User(name, fitnessGoals);
+                WeeklyTracker weeklyTracker = new WeeklyTracker();
 
                 System.out.println("\n  Set your daily goals:");
                 user.setProteinGoal(getValidInt("  > Protein goal (grams): ", input));
@@ -124,7 +125,7 @@ public class App {
                                 int duration = getValidInt("  > Duration (minutes): ", input);
 
                                 log.addWorkout(new WorkoutEntry(exerciseName, duration, sets, reps));
-                                System.out.println("  ✓ Lifting session logged!");
+                                System.out.println("  >> Lifting session logged!");
 
                         } else if (exerciseType == 2) {
                                 System.out.println("\n  What type of cardio?");
@@ -153,7 +154,7 @@ public class App {
 
                                 int duration = getValidInt("  > Duration (minutes): ", input);
                                 log.addWorkout(new WorkoutEntry(cardioName, duration, 0, 0));
-                                System.out.println("  ✓ Cardio session logged!");
+                                System.out.println("  >> Cardio session logged!");
 
                         } else {
                                 System.out.println("  Invalid choice. Please enter 1 or 2.");
@@ -175,7 +176,7 @@ public class App {
                         int fat = getValidInt("  > Fat (grams): ", input);
 
                         log.addMacro(new MacroEntry(mealName, protein, carbs, fat));
-                        System.out.println("  ✓ Meal logged!");
+                        System.out.println("  >> Meal logged!");
 
                         System.out.print("\n  Log another meal? (yes/no): ");
                         logAnother = input.nextLine();
@@ -189,7 +190,7 @@ public class App {
                 String sleepQuality = input.nextLine();
                 SleepEntry sleep = new SleepEntry(sleepHours, sleepQuality, "2026-04-27");
                 log.addSleepEntry(sleep);
-                System.out.println("  ✓ Sleep logged!");
+                System.out.println("  >> Sleep logged!");
 
                 // ========== PART 3: DISPLAY SUMMARY ==========
                 printHeader("TODAY'S SUMMARY");
@@ -197,10 +198,10 @@ public class App {
                 System.out.println("  [ WORKOUTS ]");
                 for (WorkoutEntry w : log.getWorkouts()) {
                         if (w.getSets() == 0) {
-                                System.out.println("  • " + w.getType() + " (cardio) — " +
+                                System.out.println("  - " + w.getType() + " (cardio) -- " +
                                                 w.getDurationMinutes() + " min");
                         } else {
-                                System.out.println("  • " + w.getType() + " — " +
+                                System.out.println("  - " + w.getType() + " -- " +
                                                 w.getSets() + " sets x " +
                                                 w.getReps() + " reps, " +
                                                 w.getDurationMinutes() + " min");
@@ -211,7 +212,7 @@ public class App {
                 System.out.println("  [ MEALS ]");
                 int totalCalories = 0;
                 for (MacroEntry m : log.getMacros()) {
-                        System.out.println("  • " + m.getMealName() + " — " +
+                        System.out.println("  - " + m.getMealName() + " -- " +
                                         m.getProtein() + "g protein, " +
                                         m.getCarbs() + "g carbs, " +
                                         m.getFat() + "g fat");
@@ -221,7 +222,7 @@ public class App {
 
                 printDivider();
                 System.out.println("  [ SLEEP ]");
-                System.out.println("  • " + sleep.getHours() + " hours — " + sleep.getQuality());
+                System.out.println("  - " + sleep.getHours() + " hours -- " + sleep.getQuality());
 
                 // ========== PART 4: GOAL SCORE ==========
                 GoalTracker tracker = new GoalTracker(user, log);
@@ -251,19 +252,25 @@ public class App {
 
                 printDivider();
                 int dailyScore = tracker.calcDailyScore();
+                weeklyTracker.logDay(
+                                (int) Math.round(workoutScore),
+                                (int) Math.round(macroScore),
+                                (int) Math.round(sleepScore));
                 System.out.println("\n  DAILY PROGRESS SCORE: " + dailyScore + "%");
 
                 if (dailyScore == 100) {
-                        System.out.println("Perfect day! You hit all your goals!");
+                        System.out.println("  ** Perfect day! You hit all your goals!");
                 } else if (dailyScore >= 75) {
-                        System.out.println("Great work! You're close to hitting all your goals.");
+                        System.out.println("  >> Great work! You're close to hitting all your goals.");
                 } else if (dailyScore >= 50) {
-                        System.out.println("Good effort. Keep pushing tomorrow.");
+                        System.out.println("  -> Good effort. Keep pushing tomorrow.");
                 } else {
-                        System.out.println("Room to improve. You've got this!");
+                        System.out.println("  ^ Room to improve. You've got this!");
                 }
 
-                System.out.println("\n╚══════════════════════════════════════╝\n");
+                System.out.println("\n+======================================+\n");
+
+                weeklyTracker.printWeeklySummary();
 
                 input.close();
         }
