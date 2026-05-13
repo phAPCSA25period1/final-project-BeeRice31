@@ -23,19 +23,19 @@ FitTrack is built for anyone who wants a simple, no-nonsense way to stay account
 
 |      Class      |                              Description                                     |
 |-----------------|------------------------------------------------------------------------------|
-|      `App`      | Main driver class. Runs the console UI and manages the daily logging loop    |
-|     `User`      | Stores the user's name, fitness goal description, and numeric daily targets  |
-|   `FitnessLog`  | Holds all logged entries for a single day (workouts, meals, sleep)           |
-|  `WorkoutEntry` | Represents one workout session with type, duration, sets, and reps           |
-|   `MacroEntry`  | Represents one meal with protein, carbs, fat, and a calorie calculator       |
-|   `SleepEntry`  | Represents one night of sleep with hours, quality, and date                  |
-|   `GoalTracker` | Calculates workout, protein, and sleep scores and returns a daily percentage |
-|  `WeeklyTracker`| Stores and displays scores across all 7 days using a 2D array                |
+|      App      | Main driver class. Runs the console UI and manages the daily logging loop    |
+|     User      | Stores the user's name, fitness goal description, and numeric daily targets  |
+|   FitnessLog  | Holds all logged entries for a single day (workouts, meals, sleep)           |
+|  WorkoutEntry | Represents one workout session with type, duration, sets, and reps           |
+|   MacroEntry  | Represents one meal with protein, carbs, fat, and a calorie calculator       |
+|   SleepEntry  | Represents one night of sleep with hours, quality, and date                  |
+|   GoalTracker | Calculates workout, protein, and sleep scores and returns a daily percentage |
+|  WeeklyTracker| Stores and displays scores across all 7 days using a 2D array                |
 
 ### Key Data Structures
 
-- **ArrayLists** — FitnessLog uses three ArrayLists to store WorkoutEntry, MacroEntry, and SleepEntry objects logged each day
-- **2D Array** — WeeklyTracker uses an int[7][3] array where each row is a day (Mon-Sun), and each column is a category (workout, protein, sleep)
+- ArrayLists: FitnessLog uses three ArrayLists to store WorkoutEntry, MacroEntry, and SleepEntry objects logged each day
+- 2D Array: WeeklyTracker uses an int[7][3] array where each row is a day (Mon-Sun), and each column is a category (workout, protein, sleep)
 
 ### Program Logic
 
@@ -57,8 +57,8 @@ FitTrack is built for anyone who wants a simple, no-nonsense way to stay account
 - Weekly summary clearly shows progress across all categories and days
 
 ### What I Would Improve With More Time
-- **Persistent data**: right now, all data is lost when the program closes. A file save system would let users log one day at a time over a real week
-- **Date tracking**: the date in SleepEntry is currently hardcoded and could be replaced with LocalDate.now().toString() to log the real date automatically
-- **More detailed goal feedback**: instead of just a percentage, show messages like "You were 30g short of your protein goal" so the user knows exactly what to improve
-- **Yes/no input validation**: the loop prompts that ask "yes/no" don't currently re-prompt on invalid input the way numeric fields do
-- **Inheritance**: WorkoutEntry, MacroEntry, and SleepEntry could extend a base Entry class to reduce repeated structure
+- Persistent data: right now, all data is lost when the program closes. A file save system would let users log one day at a time over a real week
+- Date tracking: the date in SleepEntry is currently hardcoded and could be replaced with LocalDate.now().toString() to log the real date automatically
+- More detailed goal feedback: instead of just a percentage, show messages like "You were 30g short of your protein goal" so the user knows exactly what to improve
+- Yes/no input validation: the loop prompts that ask "yes/no" don't currently re-prompt on invalid input the way numeric fields do
+- Inheritance: WorkoutEntry, MacroEntry, and SleepEntry could extend a base Entry class to reduce repeated structure
