@@ -2,188 +2,67 @@
 # AP Computer Science A – Final Project
 ## Software & Systems Development Capstone
 
-Welcome to your **Final Project repository**.
+# FitTrack - Daily Fitness Tracker
 
-This repository will hold:
-- Your complete Java project
-- Your project journal and planning artifacts
-- Your final, working software product
+## What This Software Does
 
-This is not just an assignment — it is a **capstone software project**.
+FitTrack is a console-based Java application that helps users track their daily fitness activity and measure progress toward personal health goals. Each day, the user logs their workouts, meals, and sleep. The app then calculates a daily progress score as a percentage based on how well the user met their goals. After logging for all 7 days, a weekly summary table is displayed, showing scores across all categories for the full week.
 
----
+## Who It's For
 
-## 📌 Project Overview (Read Carefully)
+FitTrack is built for anyone who wants a simple, no-frills way to stay accountable to their fitness goals. Instead of a complex app with accounts and syncing, this program gives a straightforward console experience where you enter your data and immediately see how your day scored. It solves the problem of not knowing whether your daily habits actually align with your goals.
 
-In this project, you will:
-- Design and build a **real piece of software**
-- Solve **one real problem** for **one clearly defined user**
-- Work using **agile development**
-- Show evidence of **professional software practices**
-- Use AI responsibly as a planning and support tool
+## How to Run the Program
 
-You will leave this course with something you can confidently say:
+1. Make sure you have the **Java JDK** installed (Java 11 or higher recommended)
+2. Clone or download this repository
+3. Open a terminal and navigate to the `src` folder
+4. Compile all files:
+5. Run the program:
+6. Follow the on-screen prompts to set your goals and log your week
 
-> “I built this software.”
+## Technical Overview
 
----
+### Main Classes
 
-## 🔁 Required Workflow (How You Must Work)
+|      Class      |                              Description                                     |
+|-----------------|------------------------------------------------------------------------------|
+|      `App`      | Main driver class. Runs the console UI and manages the daily logging loop    |
+|     `User`      | Stores the user's name, fitness goal description, and numeric daily targets  |
+|   `FitnessLog`  | Holds all logged entries for a single day (workouts, meals, sleep)           |
+|  `WorkoutEntry` | Represents one workout session with type, duration, sets, and reps           |
+|   `MacroEntry`  | Represents one meal with protein, carbs, fat, and a calorie calculator       |
+|   `SleepEntry`  | Represents one night of sleep with hours, quality, and date                  |
+|   `GoalTracker` | Calculates workout, protein, and sleep scores and returns a daily percentage |
+|  `WeeklyTracker`| Stores and displays scores across all 7 days using a 2D array                |
 
-### ✅ Daily GitHub Commits (Required)
-You are expected to:
-- Make **at least one meaningful commit every class day**
-- Write **descriptive commit messages** that explain:
-  - What you changed
-  - Why you changed it
-  - What goal it supports
+### Key Data Structures
 
-✅ Good commit messages:
-- `Sprint 1: Created Player class and tested constructor`
-- `Sprint 2: Implemented 2D map and verified movement logic`
+- **ArrayLists** — `FitnessLog` uses three ArrayLists to store `WorkoutEntry`, `MacroEntry`, and `SleepEntry` objects logged each day
+- **2D Array** — `WeeklyTracker` uses a `int[7][3]` array where each row is a day (Mon-Sun) and each column is a category (workout, protein, sleep)
 
-🚫 Poor commit messages:
-- `updates`
-- `stuff`
-- `final version`
+### Program Logic
 
-Your commit history is **evidence of your thinking and progress**.
+1. User sets their name, fitness goal, protein goal, sleep goal, and workout goal
+2. A 7-day loop runs, prompting the user to log workouts, meals, and sleep each day
+3. After each day, `GoalTracker` calculates a score for each category and an overall daily score
+4. Scores are stored in the `WeeklyTracker` 2D array via `logDay()`
+5. After all 7 days, `printWeeklySummary()` displays the full week table with daily and category averages
 
----
+## Class Diagram
 
-## 🔁 Agile Development & Sprints
+<img width="1334" height="1014" alt="Final Project ClassDiagram drawio" src="https://github.com/user-attachments/assets/4111e249-4fc6-49dd-9135-b14c406c38ed" />
 
-You will complete **4 sprints**.  
-Each sprint includes:
-- Planning
-- Building
-- Testing
-- Feedback and reflection
+## Known Limitations / Future Improvements
 
-Each sprint ends with:
-- A sprint grade
-- A sprint reflection
-- Feedback exchanged with peers
+### What Works Well
+- Clean console formatting with consistent headers and dividers
+- Input validation prevents crashes from bad numeric input
+- Weekly summary clearly shows progress across all categories and days
 
-🚫 You may NOT complete multiple sprints at once.  
-✅ Each sprint grade is **final**.
-
----
-
-## 🧪 Testing Expectations
-
-Testing is required every sprint.
-
-✅ Testing may include:
-- Running the program with different inputs
-- Print‑based testing
-- Driver program testing
-- Verifying logic and edge cases
-
-You should be able to explain:
-- What you tested
-- How you tested it
-- What you discovered or fixed
-
----
-
-## 🗂️ Required Project Components
-
-Your final project must include:
-
-- ✅ Multiple interacting Java classes
-- ✅ Encapsulation (`private` fields, appropriate getters/setters)
-- ✅ Arrays and/or ArrayLists
-- ✅ A purposeful **2D array**
-- ✅ A working driver program (`main`)
-- ✅ A class diagram matching your final code
-- ✅ Clear documentation
-- ✅ A program that runs and works
-
-Inheritance and interfaces are optional but encouraged.
-
----
-
-## 🤖 Using AI (Allowed, With Responsibility)
-
-You may use AI to:
-- Organize ideas
-- Plan sprints
-- Debug code
-- Suggest design improvements
-
-You must:
-- Document how you used AI
-- Review and evaluate AI suggestions
-- Understand and explain your final code
-
-AI should act like:
-> A junior developer you supervise — not something that builds the project for you.
-
----
-
-## 📘 Project Journal
-
-All planning, work logs, testing notes, and reflections live in **your project journal**.
-
-If it happened during this project, it should be documented there.
-
----
-
-## ✅ Final Submission Expectations
-
-By the end of the project:
-- Your program should run reliably
-- Your technical requirements should be met
-- Your code should be readable and organized
-- Your repository should look **professional**
-
----
-
-# ✨ Final Step: README Update (Very Important)
-
-When your project is complete, you must **rewrite this README**  
-so it reflects **your software**, not the assignment.
-
-Your final README should include:
-
----
-
-## 🔹 Project Title
-
-## 🔹 What This Software Does
-Explain your project in plain language.
-
-## 🔹 Who It’s For
-Describe the user and the problem being solved.
-
-## 🔹 How to Run the Program
-Clear steps so someone else can run your project.
-
-## 🔹 Technical Overview
-Brief description of:
-- Main classes
-- Key data structures
-- Program logic
-
-## 🔹 Class Diagram
-Include or link your final class diagram.
-
-## 🔹 Known Limitations / Future Improvements
-What works well, and what you would improve with more time.
-
----
-
-## 🎯 Final Reminder
-
-This repository represents **you as a developer**.
-
-Take pride in:
-- Your process
-- Your commits
-- Your code
-- Your documentation
-
-Build something real.  
-Build it thoughtfully.  
-Build it well.
+### What I Would Improve With More Time
+- **Persistent data** — right now all data is lost when the program closes. A file save system would let users log one day at a time over a real week
+- **Date tracking** — the date in `SleepEntry` is currently hardcoded and could be replaced with `LocalDate.now().toString()` to log the real date automatically
+- **More detailed goal feedback** — instead of just a percentage, show messages like "You were 30g short of your protein goal" so the user knows exactly what to improve
+- **Yes/no input validation** — the loop prompts that ask "yes/no" don't currently re-prompt on invalid input the way numeric fields do
+- **Inheritance** — `WorkoutEntry`, `MacroEntry`, and `SleepEntry` could extend a base `Entry` class to reduce repeated structure
