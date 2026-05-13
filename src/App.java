@@ -4,6 +4,7 @@ import java.util.Scanner;
  * Main application class for the Fitness Tracker program.
  * Runs the console-based interface for users to set goals and log daily
  * activity.
+ * Generative AI was used for debugging and planning how to implement the code
  */
 public class App {
 
@@ -91,9 +92,9 @@ public class App {
                 WeeklyTracker weeklyTracker = new WeeklyTracker();
 
                 System.out.println("\n  Set your daily goals:");
-                user.setProteinGoal(getValidInt("  > Protein goal (grams): ", input));
-                user.setSleepGoal(getValidInt("  > Sleep goal (hours): ", input));
-                user.setWorkoutGoal(getValidInt("  > Workout goal (sessions): ", input));
+                user.setProteinGoal(getValidInt("  > Daily Protein goal (grams): ", input));
+                user.setSleepGoal(getValidInt("  > Daily Sleep goal (hours): ", input));
+                user.setWorkoutGoal(getValidInt("  > How many workouts per day? (sessions): ", input));
 
                 printHeader("YOUR GOALS");
                 System.out.println("  Name:     " + user.getName());

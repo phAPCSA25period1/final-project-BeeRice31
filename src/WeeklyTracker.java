@@ -1,6 +1,7 @@
 /**
  * Tracks fitness scores across a 7-day week using a 2D array.
  * Each row represents a day and each column represents a category score.
+ * Generative AI was used for debugging and planning how to implement the code
  */
 public class WeeklyTracker {
 
@@ -46,7 +47,7 @@ public class WeeklyTracker {
 
     /**
      * Logs today's category scores into the weekly tracker.
-     * 
+     *
      * @param workoutScore the workout score for today (0-100)
      * @param proteinScore the protein score for today (0-100)
      * @param sleepScore   the sleep score for today (0-100)
@@ -62,7 +63,7 @@ public class WeeklyTracker {
 
     /**
      * Calculates the average score for a given category across all logged days.
-     * 
+     *
      * @param category the column index of the category to average
      * @return the average score as a double, or 0 if no days have been logged
      */
@@ -116,7 +117,7 @@ public class WeeklyTracker {
 
     /**
      * Returns the full 2D array of weekly scores.
-     * 
+     *
      * @return the weeklyScores 2D array
      */
     public int[][] getWeeklyScores() {
@@ -125,7 +126,7 @@ public class WeeklyTracker {
 
     /**
      * Returns the index of the current day being tracked.
-     * 
+     *
      * @return the current day index
      */
     public int getCurrentDay() {

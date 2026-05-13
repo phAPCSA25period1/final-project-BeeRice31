@@ -2,6 +2,7 @@
 /**
  * Stores collections of daily fitness data including workouts, meals, and sleep records.
  * Represents a journal of all of the data that is tracked
+ * Generative AI was used for debugging and planning how to implement the code
  */
 import java.util.ArrayList;
 
@@ -24,7 +25,7 @@ public class FitnessLog {
 
     /**
      * Returns the list of workout entries.
-     * 
+     *
      * @return list of WorkoutEntry objects
      */
     public ArrayList<WorkoutEntry> getWorkouts() {
@@ -34,7 +35,7 @@ public class FitnessLog {
 
     /**
      * Adds a workout entry to the log.
-     * 
+     *
      * @param workout the WorkoutEntry to add
      */
     public void addWorkout(WorkoutEntry workout) {
@@ -43,7 +44,7 @@ public class FitnessLog {
 
     /**
      * Returns the list of macro entries.
-     * 
+     *
      * @return list of MacroEntry objects
      */
     public ArrayList<MacroEntry> getMacros() {
@@ -53,7 +54,7 @@ public class FitnessLog {
 
     /**
      * Adds a macro entry to the log.
-     * 
+     *
      * @param macro the MacroEntry to add
      */
     public void addMacro(MacroEntry macro) {
@@ -62,7 +63,7 @@ public class FitnessLog {
 
     /**
      * Returns the list of sleep entries.
-     * 
+     *
      * @return list of SleepEntry objects
      */
     public ArrayList<SleepEntry> getSleepEntries() {
@@ -71,7 +72,7 @@ public class FitnessLog {
 
     /**
      * Adds a sleep entry to the log.
-     * 
+     *
      * @param sleep the SleepEntry to add
      */
     public void addSleepEntry(SleepEntry sleep) {

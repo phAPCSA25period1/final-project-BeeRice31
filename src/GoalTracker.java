@@ -2,6 +2,7 @@
  * Calculates daily fitness scores based on user goals and logged activities.
  * Compares workout, macro, and sleep data against the user's goals and returns
  * a percentage.
+ * Generative AI was used for debugging and planning how to implement the code
  */
 public class GoalTracker {
     // The user whose goals are being tracked
@@ -11,7 +12,7 @@ public class GoalTracker {
 
     /**
      * Constructs a GoalTracker for a given user and fitness log.
-     * 
+     *
      * @param user the User whose goals will be used for scoring
      * @param log  the FitnessLog containing today's entries
      */
@@ -23,7 +24,7 @@ public class GoalTracker {
     /**
      * Calculates the overall daily fitness score as a percentage.
      * Each category (workout, macros, sleep) is weighted equally at 33%.
-     * 
+     *
      * @return an integer from 0 to 100 representing the daily score
      */
     public int calcDailyScore() {
@@ -41,7 +42,7 @@ public class GoalTracker {
 
     /**
      * Calculates the workout score based on number of workouts logged vs the goal.
-     * 
+     *
      * @return a score from 0.0 to 100.0
      */
     private double calcWorkoutScore() {
@@ -57,7 +58,7 @@ public class GoalTracker {
 
     /**
      * Calculates the macro score based on total protein logged vs the protein goal.
-     * 
+     *
      * @return a score from 0.0 to 100.0
      */
     private double calcMacroScore() {
@@ -76,7 +77,7 @@ public class GoalTracker {
 
     /**
      * Calculates the sleep score based on total hours slept vs the sleep goal.
-     * 
+     *
      * @return a score from 0.0 to 100.0
      */
     private double calcSleepScore() {
@@ -95,7 +96,7 @@ public class GoalTracker {
 
     /**
      * Returns the user associated with this GoalTracker.
-     * 
+     *
      * @return the User object
      */
     public User getUser() {
@@ -104,7 +105,7 @@ public class GoalTracker {
 
     /**
      * Sets the user for this GoalTracker.
-     * 
+     *
      * @param user the new User object
      */
     public void setUser(User user) {
@@ -113,7 +114,7 @@ public class GoalTracker {
 
     /**
      * Returns the fitness log associated with this GoalTracker.
-     * 
+     *
      * @return the FitnessLog object
      */
     public FitnessLog getLog() {
@@ -122,7 +123,7 @@ public class GoalTracker {
 
     /**
      * Sets the fitness log for this GoalTracker.
-     * 
+     *
      * @param log the new FitnessLog object
      */
     public void setLog(FitnessLog log) {

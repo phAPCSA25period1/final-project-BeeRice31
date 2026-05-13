@@ -1,6 +1,7 @@
 /**
  * Represents a sleep record for a single night.
  * Stores hours slept, quality rating, and the date of the record.
+ * Generative AI was used for debugging and planning how to implement the code
  */
 public class SleepEntry {
     // Number of hours slept
@@ -12,7 +13,7 @@ public class SleepEntry {
 
     /**
      * Constructs a SleepEntry with the given hours, quality, and date.
-     * 
+     *
      * @param hours   number of hours slept
      * @param quality quality rating of the sleep
      * @param date    date of the sleep record in YYYY-MM-DD format
@@ -25,7 +26,7 @@ public class SleepEntry {
 
     /**
      * Returns the number of hours slept.
-     * 
+     *
      * @return hours slept as a double
      */
     public double getHours() {
@@ -34,7 +35,7 @@ public class SleepEntry {
 
     /**
      * Sets the number of hours slept.
-     * 
+     *
      * @param hours number of hours to set
      */
     public void setHours(double hours) {
@@ -43,7 +44,7 @@ public class SleepEntry {
 
     /**
      * Returns the quality rating of the sleep.
-     * 
+     *
      * @return sleep quality as a String
      */
     public String getQuality() {
@@ -52,7 +53,7 @@ public class SleepEntry {
 
     /**
      * Sets the quality rating of the sleep.
-     * 
+     *
      * @param quality the quality rating to set
      */
     public void setQuality(String quality) {
@@ -61,7 +62,7 @@ public class SleepEntry {
 
     /**
      * Returns the date of the sleep record.
-     * 
+     *
      * @return date as a String in YYYY-MM-DD format
      */
     public String getDate() {
@@ -70,7 +71,7 @@ public class SleepEntry {
 
     /**
      * Sets the date of the sleep record.
-     * 
+     *
      * @param date the date to set in YYYY-MM-DD format
      */
     public void setDate(String date) {

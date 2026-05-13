@@ -1,6 +1,7 @@
 /**
  * Represents a meal entry with macronutrient information.
  * Stores protein, carbs, and fat and can calculate total calories.
+ * Generative AI was used for debugging and planning how to implement the code
  */
 public class MacroEntry {
     private String mealName;
@@ -10,7 +11,7 @@ public class MacroEntry {
 
     /**
      * Constructs a MacroEntry with the given meal name and macronutrient values.
-     * 
+     *
      * @param mealName the name of the meal
      * @param protein  grams of protein
      * @param carbs    grams of carbohydrates
@@ -25,7 +26,7 @@ public class MacroEntry {
 
     /**
      * Returns the name of the meal.
-     * 
+     *
      * @return the meal name
      */
     public String getMealName() {
@@ -34,7 +35,7 @@ public class MacroEntry {
 
     /**
      * Sets the name of the meal.
-     * 
+     *
      * @param mealName the meal name to set
      */
     public void setMealName(String mealName) {
@@ -43,7 +44,7 @@ public class MacroEntry {
 
     /**
      * Returns the grams of protein in the meal.
-     * 
+     *
      * @return protein in grams
      */
     public int getProtein() {
@@ -52,7 +53,7 @@ public class MacroEntry {
 
     /**
      * Sets the grams of protein in the meal.
-     * 
+     *
      * @param protein grams of protein to set
      */
     public void setProtein(int protein) {
@@ -61,7 +62,7 @@ public class MacroEntry {
 
     /**
      * Returns the grams of carbohydrates in the meal.
-     * 
+     *
      * @return carbs in grams
      */
     public int getCarbs() {
@@ -70,7 +71,7 @@ public class MacroEntry {
 
     /**
      * Sets the grams of carbohydrates in the meal.
-     * 
+     *
      * @param carbs grams of carbs to set
      */
     public void setCarbs(int carbs) {
@@ -79,7 +80,7 @@ public class MacroEntry {
 
     /**
      * Returns the grams of fat in the meal.
-     * 
+     *
      * @return fat in grams
      */
     public int getFat() {
@@ -88,7 +89,7 @@ public class MacroEntry {
 
     /**
      * Sets the grams of fat in the meal.
-     * 
+     *
      * @param fat grams of fat to set
      */
     public void setFat(int fat) {
@@ -98,7 +99,7 @@ public class MacroEntry {
     /**
      * Calculates and returns the total calories in the meal.
      * Uses standard values: protein = 4 cal/g, carbs = 4 cal/g, fat = 9 cal/g.
-     * 
+     *
      * @return total calories as an integer
      */
     public int calculateCalories() {

@@ -1,6 +1,7 @@
 /**
  * Represents a single workout session with exercise details.
  * Stores the exercise type, duration, sets, and reps.
+ * Generative AI was used for debugging and planning how to implement the code
  */
 public class WorkoutEntry {
     // Type of exercise (e.g., "Cardio", "Strength")
@@ -14,7 +15,7 @@ public class WorkoutEntry {
 
     /**
      * Constructs a WorkoutEntry with the given exercise details.
-     * 
+     *
      * @param type            the type of exercise
      * @param durationMinutes the duration of the workout in minutes
      * @param sets            the number of sets performed
@@ -29,7 +30,7 @@ public class WorkoutEntry {
 
     /**
      * Returns the type of exercise.
-     * 
+     *
      * @return exercise type as a String
      */
     public String getType() {
@@ -38,7 +39,7 @@ public class WorkoutEntry {
 
     /**
      * Sets the type of exercise.
-     * 
+     *
      * @param type the exercise type to set
      */
     public void setType(String type) {
@@ -47,7 +48,7 @@ public class WorkoutEntry {
 
     /**
      * Returns the duration of the workout in minutes.
-     * 
+     *
      * @return duration in minutes as an integer
      */
     public int getDurationMinutes() {
@@ -56,7 +57,7 @@ public class WorkoutEntry {
 
     /**
      * Sets the duration of the workout in minutes.
-     * 
+     *
      * @param durationMinutes the duration to set
      */
     public void setDurationMinutes(int durationMinutes) {
@@ -65,7 +66,7 @@ public class WorkoutEntry {
 
     /**
      * Returns the number of sets performed.
-     * 
+     *
      * @return number of sets as an integer
      */
     public int getSets() {
@@ -74,7 +75,7 @@ public class WorkoutEntry {
 
     /**
      * Sets the number of sets performed.
-     * 
+     *
      * @param sets the number of sets to set
      */
     public void setSets(int sets) {
@@ -83,7 +84,7 @@ public class WorkoutEntry {
 
     /**
      * Returns the number of reps per set.
-     * 
+     *
      * @return number of reps as an integer
      */
     public int getReps() {
@@ -92,7 +93,7 @@ public class WorkoutEntry {
 
     /**
      * Sets the number of reps per set.
-     * 
+     *
      * @param reps the number of reps to set
      */
     public void setReps(int reps) {
