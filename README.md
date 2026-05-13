@@ -1,7 +1,3 @@
-[![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-2972f46106e565e64193e422d61a12cf1da4916b45550586e14ef0a7c637dd04.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=23598044)
-# AP Computer Science A – Final Project
-## Software & Systems Development Capstone
-
 # FitTrack - Daily Fitness Tracker
 
 ## What This Software Does
@@ -10,13 +6,13 @@ FitTrack is a console-based Java application that helps users track their daily 
 
 ## Who It's For
 
-FitTrack is built for anyone who wants a simple, no-frills way to stay accountable to their fitness goals. Instead of a complex app with accounts and syncing, this program gives a straightforward console experience where you enter your data and immediately see how your day scored. It solves the problem of not knowing whether your daily habits actually align with your goals.
+FitTrack is built for anyone who wants a simple, no-nonsense way to stay accountable to their fitness goals. Instead of a complex app with accounts and syncing, this program gives a straightforward console experience where you enter your data and immediately see how your day scored. It solves the problem of not knowing whether your daily habits actually align with your goals.
 
 ## How to Run the Program
 
 1. Make sure you have the **Java JDK** installed (Java 11 or higher recommended)
 2. Clone or download this repository
-3. Open a terminal and navigate to the `src` folder
+3. Open a terminal and navigate to the src folder
 4. Compile all files:
 5. Run the program:
 6. Follow the on-screen prompts to set your goals and log your week
@@ -38,16 +34,16 @@ FitTrack is built for anyone who wants a simple, no-frills way to stay accountab
 
 ### Key Data Structures
 
-- **ArrayLists** — `FitnessLog` uses three ArrayLists to store `WorkoutEntry`, `MacroEntry`, and `SleepEntry` objects logged each day
-- **2D Array** — `WeeklyTracker` uses a `int[7][3]` array where each row is a day (Mon-Sun) and each column is a category (workout, protein, sleep)
+- **ArrayLists** — FitnessLog uses three ArrayLists to store WorkoutEntry, MacroEntry, and SleepEntry objects logged each day
+- **2D Array** — WeeklyTracker uses an int[7][3] array where each row is a day (Mon-Sun), and each column is a category (workout, protein, sleep)
 
 ### Program Logic
 
 1. User sets their name, fitness goal, protein goal, sleep goal, and workout goal
 2. A 7-day loop runs, prompting the user to log workouts, meals, and sleep each day
-3. After each day, `GoalTracker` calculates a score for each category and an overall daily score
-4. Scores are stored in the `WeeklyTracker` 2D array via `logDay()`
-5. After all 7 days, `printWeeklySummary()` displays the full week table with daily and category averages
+3. After each day, GoalTracker calculates a score for each category and an overall daily score
+4. Scores are stored in the WeeklyTracker 2D array via logDay()
+5. After all 7 days, printWeeklySummary() displays the full week table with daily and category averages
 
 ## Class Diagram
 
@@ -61,8 +57,8 @@ FitTrack is built for anyone who wants a simple, no-frills way to stay accountab
 - Weekly summary clearly shows progress across all categories and days
 
 ### What I Would Improve With More Time
-- **Persistent data** — right now all data is lost when the program closes. A file save system would let users log one day at a time over a real week
-- **Date tracking** — the date in `SleepEntry` is currently hardcoded and could be replaced with `LocalDate.now().toString()` to log the real date automatically
-- **More detailed goal feedback** — instead of just a percentage, show messages like "You were 30g short of your protein goal" so the user knows exactly what to improve
-- **Yes/no input validation** — the loop prompts that ask "yes/no" don't currently re-prompt on invalid input the way numeric fields do
-- **Inheritance** — `WorkoutEntry`, `MacroEntry`, and `SleepEntry` could extend a base `Entry` class to reduce repeated structure
+- **Persistent data**: right now, all data is lost when the program closes. A file save system would let users log one day at a time over a real week
+- **Date tracking**: the date in SleepEntry is currently hardcoded and could be replaced with LocalDate.now().toString() to log the real date automatically
+- **More detailed goal feedback**: instead of just a percentage, show messages like "You were 30g short of your protein goal" so the user knows exactly what to improve
+- **Yes/no input validation**: the loop prompts that ask "yes/no" don't currently re-prompt on invalid input the way numeric fields do
+- **Inheritance**: WorkoutEntry, MacroEntry, and SleepEntry could extend a base Entry class to reduce repeated structure
